@@ -1,5 +1,5 @@
 
-# Q1: In-memory rate limiter for an LLM API gateway
+# In-memory rate limiter for an LLM API gateway
 
 ## What you should know
 
