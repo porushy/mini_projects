@@ -1,9 +1,7 @@
 
 # In-memory rate limiter for an LLM API gateway
 
-## What you should know
-
-You will need a working knowledge of:
+##Major concepts used in this project are:
 
 - Rate limiting concepts
 - Sliding window
