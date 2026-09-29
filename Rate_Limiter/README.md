@@ -1,7 +1,7 @@
 
 # In-memory rate limiter for an LLM API gateway
 
-##Major concepts used in this project are:
+## Major concepts used in this project are:
 
 - Rate limiting concepts
 - Sliding window
