@@ -12,7 +12,7 @@ class StatsDict(TypedDict):
     total_allowed: int
     total_rejected: int
     active_keys: int
-    
+
 
 class Bucket:
     def __init__(self, tokens: float, last: float):
@@ -98,7 +98,6 @@ class RateLimiter:
         else:
             q.append(now)
             return (True, limit - len(q), int(q[0] + window_ms - now))
-        #raise NotImplementedError
 
     def policy_b_limit(
         self,
@@ -118,7 +117,7 @@ class RateLimiter:
 
         if key not in self._state:
             self._state[key] = Bucket(tokens = capacity, last = now)
-            #self._state[key] = [capacity, now] #[tokens left(internal budget), last_time]
+ 
 
         b = self._state[key]
         b.tokens += (now - b.last) * refill_rate / 1000
@@ -133,25 +132,7 @@ class RateLimiter:
                 return (False, 0, 0)
             return (False, 0, int((1 - b.tokens)*1000 / refill_rate) )
 
-        '''q = self._state[key] #store bucket in a variable named q
-        q[0] += (now - q[1]) * refill_rate / 1000
-        #update bucket taken with ceiling of "capacity"
-        q[0] = capacity if (q[0] > capacity) else q[0] 
-        q[1] = now #update the time in bucket
-        if q[0] >= 1: #more than one token means request is accepted
-            #request is accepted
-            q[0] -= 1 #reduce one token
-            return (True, int(q[0]), 0)
-        else:
-            #request is rejected
-            #when capacity < 1
-            #if refill rate is 0, capacity will never recover. Reset_after_ms is any non-negative integer
-            if refill_rate == 0 or capacity < 1:
-                return (False, 0, 0)
-            #when capacity >= 1 and refill_rate > 0
-            return (False, 0, int((1 - q[0])*1000/refill_rate)   )'''
-
-        #raise NotImplementedError
+ 
 
     def stats(self) -> StatsDict:
         """
