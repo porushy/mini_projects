@@ -1,0 +1,11 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Personal notes (kept local only)
+my_learning.md
+REFLECTION.essay
+statment.txt
+Readme_local.md
